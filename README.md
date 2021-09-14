@@ -27,7 +27,7 @@ Options:
   -i, --input       Specify input file or input folder (required)        [array]
   -o, --output      Specify output path                                  [array]
   -s, --stylesheet  Specify stylesheet for html file      [string] [default: ""]
-  -v, --version     Show program name and version
+  -v, --version     Show version number                                [boolean]
 ```
 
 # License
