@@ -17,14 +17,6 @@ A simple static site generator that converts text files into HTML files
 2.   npm i -g
 ```
 
-# Usage
-
-```
-mh-ssg -i text.txt
-mh-ssg -i folder
-mh-ssg -i folder -o sampleFolder -s https://example.com/with/css.css
-```
-
 # Help
 
 ```
