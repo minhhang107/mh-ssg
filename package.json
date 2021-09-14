@@ -1,0 +1,17 @@
+{
+  "name": "mh-ssg",
+  "version": "0.1.0",
+  "description": "",
+  "main": "bin/index.js",
+  "bin": {
+    "mh-ssg": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Minh Hang Nguyen",
+  "license": "MIT",
+  "dependencies": {
+    "yargs": "^17.1.1"
+  }
+}
