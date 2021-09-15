@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const createHtml = require("create-html");
 
 //Convert text file into html file, return html content
 const processFile = (inputFile, output, stylesheet) => {
@@ -14,28 +15,23 @@ const processFile = (inputFile, output, stylesheet) => {
       return console.log(err);
     } else {
       const title = data.split(/\r?\n\r?\n\r?\n/)[0];
-      const content = data
-        .slice(title.length + 1)
-        .split(/\r?\n\r?\n/)
-        .map((para) => `<p>${para.replace(/\r?\n/, " ")}</p>`)
-        .join(" ");
+      const content =
+        `<h1>${title}</h1>\n\n` +
+        data
+          .slice(title.length + 3)
+          .split(/\r?\n\r?\n/)
+          .map((para) => `<p>${para.replace(/\r?\n/, " ")}</p>`)
+          .join("\n\n ");
 
-      const template = `<!DOCTYPE html>
-                        <html lang="en">
-                          <head>
-                            <meta charset="utf-8" />
-                            <title>${title}</title>
-                            <meta name="viewport" content="width=device-width, initial-scale=1" />
-                            <link rel=\"stylesheet\" href=\"${stylesheet}\">
-                          </head>
-                          <body>
-                            <h1>${title}</h1>
-                            ${content}
-                          </body>
-                        </html>
-                        `;
+      const html = createHtml({
+        title: title,
+        css: stylesheet,
+        lang: "en",
+        head: `<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />`,
+        body: content,
+      });
 
-      fs.writeFile(outputFilePath, template, (err) => {
+      fs.writeFile(outputFilePath, html, (err) => {
         if (err) return console.log(err);
       });
     }
