@@ -78,8 +78,8 @@ fs.lstat(input, (err, stats) => {
       if (err) return console.log(err);
 
       const output = getOutputName(argv.output);
-      files
-        .filter((file) => path.extname(file) === ".txt")
+      const txtFiles = files.filter((file) => path.extname(file) === ".txt");
+      txtFiles
         .map((file) => {
           return path.join(input, file);
         })
@@ -88,7 +88,7 @@ fs.lstat(input, (err, stats) => {
         });
 
       console.log(
-        `${files.length} file(s) saved to folder ${output} successfully!`
+        `${txtFiles.length} file(s) saved to folder ${output} successfully!`
       );
     });
   }
