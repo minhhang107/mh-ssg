@@ -5,6 +5,7 @@ const yargs = require("yargs");
 const { name, version } = require("../package.json");
 const getOutputName = require("./utils/getOutputName");
 const processFile = require("./utils/processFile");
+const processFolder = require("./utils/processFolder");
 
 const argv = yargs
   .scriptName("mh-ssg")
@@ -60,6 +61,8 @@ fs.lstat(input, (err, stats) => {
       "Input file does not exist. Please use a different file."
     );
 
+  const output = getOutputName(argv.output);
+
   //handle text file input
   if (stats.isFile()) {
     if (path.extname(input) !== ".txt") {
@@ -67,29 +70,12 @@ fs.lstat(input, (err, stats) => {
         "File type not supported. Please use a text file (.txt) only."
       );
     }
-    const output = getOutputName(argv.output);
     processFile(input, output, stylesheet);
     console.log(`File saved to folder ${output} successfully!`);
   }
 
   //handle folder input
   if (stats.isDirectory()) {
-    fs.readdir(input, (err, files) => {
-      if (err) return console.log(err);
-
-      const output = getOutputName(argv.output);
-      const txtFiles = files.filter((file) => path.extname(file) === ".txt");
-      txtFiles
-        .map((file) => {
-          return path.join(input, file);
-        })
-        .forEach((file) => {
-          processFile(file, output, stylesheet);
-        });
-
-      console.log(
-        `${txtFiles.length} file(s) saved to folder ${output} successfully!`
-      );
-    });
+    processFolder(input, output, stylesheet);
   }
 });
