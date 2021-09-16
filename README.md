@@ -33,7 +33,8 @@ Options:
 # Example
 
 Using `mh-ssg -i file.txt -o folder -s https://cdn.jsdelivr.net/npm/water.css@2/out/water.css` will convert
-######./file.txt
+
+###### ./file.txt
 
 ```
 Silver Blaze
@@ -48,7 +49,8 @@ sat down together to our breakfast one morning.
 ```
 
 into
-######./folder/file.html
+
+###### ./folder/file.html
 
 ```
 <!doctype html>
