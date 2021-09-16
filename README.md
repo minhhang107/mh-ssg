@@ -30,6 +30,50 @@ Options:
   -v, --version     Show version number                                [boolean]
 ```
 
+# Example
+
+Using `mh-ssg -i file.txt -o folder -s https://cdn.jsdelivr.net/npm/water.css@2/out/water.css` will convert
+######./file.txt
+
+```
+Silver Blaze
+
+
+I am afraid, Watson, that I shall have to go,” said Holmes, as we
+sat down together to our breakfast one morning.
+
+“Go! Where to?”
+
+“To Dartmoor; to King’s Pyland.”
+```
+
+into
+######./folder/file.html
+
+```
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<title>Silver Blaze</title>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+
+</head>
+<body>
+<h1>Silver Blaze</h1>
+
+<p>I am afraid, Watson, that I shall have to go,” said Holmes, as we sat down together to our breakfast one morning.</p>
+
+<p>“Go! Where to?”</p>
+
+<p>“To Dartmoor; to King’s Pyland.”</p>
+
+</body>
+</html>
+```
+
 # License
 
 This project is licensed under the [MIT](https://github.com/minhhang107/mh-ssg/blob/main/LICENSE) License
