@@ -8,19 +8,21 @@ A simple static site generator that converts text files into HTML files
 - Allows input of a directory containing text file(s)
 - Supports custom stylesheet
 - Supports user-specified output folder
-- Converts first line of text file into title
+- Finds and sets title to HTML file (if available)
 
 # Installation
 
 ```
 1.   Clone the project
-2.   npm i -g
+2.   Install [NodeJs](https://nodejs.org/en/)
+3.   Redirect to `mh-ssg` directory
+4.   npm i -g .
 ```
 
 # Help
 
 ```
-Usage: mh-ssg -i <filename> -o <outputpath> -s <stylesheet>
+Usage: mh-ssg -i <filename> -o <path> -s <stylesheet>
 
 Options:
   -h, --help        Show help                                          [boolean]

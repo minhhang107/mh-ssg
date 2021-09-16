@@ -14,17 +14,19 @@ const processFile = (inputFile, output, stylesheet) => {
     if (err) {
       return console.log(err);
     } else {
-      const title = data.split(/\r?\n\r?\n\r?\n/)[0];
+      const doubleNewLines = data.match(/^.+(\r?\n\r?\n)\r?\n/);
+      const title = doubleNewLines ? doubleNewLines[0] : "";
+
       const content =
-        `<h1>${title}</h1>\n\n` +
+        `<h1>${title.trim()}</h1>\n\n` +
         data
-          .slice(title.length + 3)
+          .slice(title.length)
           .split(/\r?\n\r?\n/)
           .map((para) => `<p>${para.replace(/\r?\n/, " ")}</p>`)
-          .join("\n\n ");
+          .join("\n\n");
 
       const html = createHtml({
-        title: title,
+        title: title != "" ? title.trim() : path.basename(inputFile, ".txt"),
         css: stylesheet,
         lang: "en",
         head: `<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />`,
