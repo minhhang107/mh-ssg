@@ -3,9 +3,9 @@ const fs = require("fs");
 const path = require("path");
 const yargs = require("yargs");
 const { name, version } = require("../package.json");
-const getOutputName = require("./utils/getOutputName");
 const processFile = require("./utils/processFile");
 const processFolder = require("./utils/processFolder");
+const validateOutputFolder = require("./utils/validateOutputFolder");
 
 const argv = yargs
   .scriptName("mh-ssg")
@@ -24,7 +24,6 @@ const argv = yargs
     alias: "s",
     describe: "Specify stylesheet for html file",
     type: "string",
-    default: "",
   })
   .alias("help", "h")
   .version(`You're running ${name} version ${version}`)
@@ -37,17 +36,10 @@ console.log("-----------------------------------------------------------\n");
 yargs.showHelp();
 console.log("");
 
-if (!argv.input) {
-  if (argv.output) {
-    return console.log(
-      "Input file cannot be blank. Please specify an input file or folder."
-    );
-  }
-  return;
-}
-
-const input = argv.input.join(" ");
-const stylesheet = argv.stylesheet;
+const input = !argv.input ? "" : argv.input.join(" ");
+const output =
+  !argv.output || argv.output == "" ? "dist" : argv.output.join(" ");
+const stylesheet = !argv.stylesheet ? "" : argv.stylesheet;
 
 if (input === "") {
   return console.error(
@@ -57,11 +49,15 @@ if (input === "") {
 
 fs.lstat(input, (err, stats) => {
   if (err)
-    return console.log(
+    return console.error(
       "Input file does not exist. Please use a different file."
     );
 
-  const output = getOutputName(argv.output);
+  //process output folder before converting
+  if (!validateOutputFolder(output))
+    return console.error(
+      "Output folder does not exist. Please specify a different output folder."
+    );
 
   //handle text file input
   if (stats.isFile()) {
