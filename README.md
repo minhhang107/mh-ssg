@@ -15,8 +15,8 @@ A simple static site generator that converts text files into HTML files
 ```
 1.   Clone the project
 2.   Install [NodeJs](https://nodejs.org/en/)
-3.   Redirect to `mh-ssg` directory
-4.   npm i -g .
+3.   Redirect to project directory
+4.   Install the tool with npm i -g .
 ```
 
 # Help
@@ -28,7 +28,7 @@ Options:
   -h, --help        Show help                                          [boolean]
   -i, --input       Specify input file or input folder (required)        [array]
   -o, --output      Specify output path                                  [array]
-  -s, --stylesheet  Specify stylesheet for html file      [string] [default: ""]
+  -s, --stylesheet  Specify stylesheet for html file                    [string]
   -v, --version     Show version number                                [boolean]
 ```
 
