@@ -36,7 +36,15 @@ console.log("-----------------------------------------------------------\n");
 yargs.showHelp();
 console.log("");
 
-const input = !argv.input ? "" : argv.input.join(" ");
+if (!argv.input) {
+  if (argv.output)
+    return console.error(
+      "Input file cannot be blank. Please specify an input file or folder."
+    );
+  return;
+}
+
+const input = argv.input.join(" ");
 const output =
   !argv.output || argv.output == "" ? "dist" : argv.output.join(" ");
 const stylesheet = !argv.stylesheet ? "" : argv.stylesheet;
