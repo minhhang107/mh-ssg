@@ -12,12 +12,10 @@ A simple static site generator that converts text files into HTML files
 
 # Installation
 
-```
-1.   Clone the project
-2.   Install [NodeJs](https://nodejs.org/en/)
-3.   Redirect to project directory
-4.   Install the tool with npm i -g .
-```
+> 1.  Clone the project
+> 2.  Install [NodeJs](https://nodejs.org/en/)
+> 3.  Redirect to project directory
+> 4.  Install the tool with `npm i -g .`
 
 # Help
 
