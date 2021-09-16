@@ -29,7 +29,7 @@ const processFile = (inputFile, output, stylesheet) => {
         title: title != "" ? title.trim() : path.basename(inputFile, ".txt"),
         css: stylesheet,
         lang: "en",
-        head: `<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />`,
+        head: `<meta name="viewport" content="width=device-width, initial-scale=1"/>`,
         body: content,
       });
 
