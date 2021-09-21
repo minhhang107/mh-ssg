@@ -12,7 +12,8 @@ const processFile = (inputFile, output, stylesheet) => {
 
   fs.readFile(inputFilePath, "utf-8", (err, data) => {
     if (err) {
-      return console.log(err);
+      console.error("Unable to read file.");
+      return process.exit(1);
     } else {
       const doubleNewLines = data.match(/^.+(\r?\n\r?\n)\r?\n/);
       const title = doubleNewLines ? doubleNewLines[0] : "";
@@ -34,7 +35,10 @@ const processFile = (inputFile, output, stylesheet) => {
       });
 
       fs.writeFile(outputFilePath, html, (err) => {
-        if (err) return console.log(err);
+        if (err) {
+          console.error("Unable to save file.");
+          return process.exit(1);
+        }
       });
     }
   });

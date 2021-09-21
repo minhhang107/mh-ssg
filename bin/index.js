@@ -50,29 +50,33 @@ const output =
 const stylesheet = !argv.stylesheet ? "" : argv.stylesheet;
 
 if (input === "") {
-  return console.error(
+  console.error(
     "Input file cannot be blank. Please specify an input file or folder."
   );
+  return process.exit(1);
 }
 
 fs.lstat(input, (err, stats) => {
-  if (err)
-    return console.error(
-      "Input file does not exist. Please use a different file."
-    );
+  if (err) {
+    console.error("Input file does not exist. Please use a different file.");
+    return process.exit(1);
+  }
 
   //process output folder before converting
-  if (!validateOutputFolder(output))
-    return console.error(
+  if (!validateOutputFolder(output)) {
+    console.error(
       "Output folder does not exist. Please specify a different output folder."
     );
+    return process.exit(1);
+  }
 
   //handle text file input
   if (stats.isFile()) {
     if (path.extname(input) !== ".txt") {
-      return console.error(
+      console.error(
         "File type not supported. Please use a text file (.txt) only."
       );
+      return process.exit(1);
     }
     processFile(input, output, stylesheet);
     console.log(`File saved to folder ${output} successfully!`);

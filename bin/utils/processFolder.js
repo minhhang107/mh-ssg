@@ -4,7 +4,10 @@ const processFile = require("./processFile");
 
 const processFolder = (input, output, stylesheet) => {
   fs.readdir(input, (err, files) => {
-    if (err) return console.log(err);
+    if (err) {
+      console.error(`Unable to process file(s) inside ${input}`);
+      return process.exit(1);
+    }
 
     const txtFiles = files.filter((file) => path.extname(file) === ".txt");
     txtFiles
