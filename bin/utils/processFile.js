@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const chalk = require("chalk");
 const createHtml = require("create-html");
 
 //Convert text file into html file, return html content
@@ -12,7 +13,7 @@ const processFile = (inputFile, output, stylesheet) => {
 
   fs.readFile(inputFilePath, "utf-8", (err, data) => {
     if (err) {
-      console.error("Unable to read file.");
+      console.error(chalk.red("Unable to read file."));
       return process.exit(1);
     } else {
       const doubleNewLines = data.match(/^.+(\r?\n\r?\n)\r?\n/);
@@ -36,7 +37,7 @@ const processFile = (inputFile, output, stylesheet) => {
 
       fs.writeFile(outputFilePath, html, (err) => {
         if (err) {
-          console.error("Unable to save file.");
+          console.error(chalk.red("Unable to save file."));
           return process.exit(1);
         }
       });

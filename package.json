@@ -12,6 +12,7 @@
   "author": "Minh Hang Nguyen",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^4.1.2",
     "create-html": "^4.1.0",
     "yargs": "^17.1.1"
   }
