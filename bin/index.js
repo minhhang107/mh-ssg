@@ -87,10 +87,10 @@ fs.lstat(input, (err, stats) => {
 
   //handle text file input
   if (stats.isFile()) {
-    if (path.extname(input) !== ".txt") {
+    if (path.extname(input) !== ".txt" && path.extname(input) !== ".md") {
       console.error(
         chalk.red(
-          "File type not supported. Please use a text file (.txt) only."
+          "File type not supported. Please use a text file or markdown file (.txt or .md) only."
         )
       );
       return process.exit(1);
