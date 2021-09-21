@@ -1,14 +1,14 @@
 # mh-ssg
 
-A simple static site generator that converts text files into HTML files
+A simple static site generator that converts text files or markdown files into HTML files
 
 # Features
 
-- Allows input of a single text file
+- Allows input of a single text file or a markdown file
 - Allows input of a directory containing text file(s)
 - Supports custom stylesheet
 - Supports user-specified output folder
-- Finds and sets title to HTML file (if available)
+- Finds and sets title to HTML file (if available and only works for .txt file)
 
 # Installation
 
