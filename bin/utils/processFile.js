@@ -6,12 +6,9 @@ const createHtml = require("create-html");
 //Convert text file into html file, return html content
 const processFile = (inputFile, output, stylesheet) => {
   const inputFilePath = path.join(path.resolve(), inputFile);
-  const outputFilePath = path.join(
-    output,
-    path.basename(inputFile, ".txt") + ".html"
-  );
 
   fs.readFile(inputFilePath, "utf-8", (err, data) => {
+    let outputFilePath;
     if (err) {
       console.error(chalk.red("Unable to read file."));
       return process.exit(1);
@@ -19,6 +16,11 @@ const processFile = (inputFile, output, stylesheet) => {
       let html;
 
       if (path.extname(inputFile) === ".txt") {
+        outputFilePath = path.join(
+          output,
+          path.basename(inputFile, ".txt") + ".html"
+        );
+
         const doubleNewLines = data.match(/^.+(\r?\n\r?\n)\r?\n/);
         const title = doubleNewLines ? doubleNewLines[0] : "";
 
@@ -39,6 +41,11 @@ const processFile = (inputFile, output, stylesheet) => {
         });
       } else {
         // .md file
+        outputFilePath = path.join(
+          output,
+          path.basename(inputFile, ".md") + ".html"
+        );
+
         const h1 = /^# (.*$)/gim;
         const h2 = /^## (.*$)/gim;
         const h3 = /^### (.*$)/gim;
