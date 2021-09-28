@@ -55,6 +55,7 @@ const processFile = (inputFile, output, stylesheet) => {
         const bold = /\*\*(.*)\*\*/gim;
         const italics = /\_(.*)\_/gim;
         const link = /\[(.*?)\]\((.*?)\)/gim;
+        const hr = /^---$/gim;
         const content = data
           .replace(h1, "<h1>$1</h1>")
           .replace(h2, "<h2>$1</h2>")
@@ -64,7 +65,8 @@ const processFile = (inputFile, output, stylesheet) => {
           .replace(h6, "<h6>$1</h6>")
           .replace(bold, "<b>$1</b>")
           .replace(italics, "<i>$1</i>")
-          .replace(link, "<a href='$2'>$1</a>");
+          .replace(link, "<a href='$2'>$1</a>")
+          .replace(hr, "<hr>");
 
         html = createHtml({
           css: stylesheet,
