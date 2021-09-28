@@ -9,6 +9,7 @@ A simple static site generator that converts text files or markdown files into H
 - Supports custom stylesheet
 - Supports user-specified output folder
 - Finds and sets title to HTML file (if available and only works for .txt file)
+- Finds and converts Markdown syntax (`Heading 1-6`, `italics`, `bold`, `link`, `inline code`) into correct HTML tags
 
 # Installation
 
