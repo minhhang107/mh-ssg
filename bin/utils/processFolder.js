@@ -19,9 +19,20 @@ const processFolder = (input, output, stylesheet) => {
         processFile(file, output, stylesheet);
       });
 
+    const mdFiles = files.filter((file) => path.extname(file) === ".md");
+    mdFiles
+      .map((file) => {
+        return path.join(input, file);
+      })
+      .forEach((file) => {
+        processFile(file, output, stylesheet);
+      });
+
     console.log(
       chalk.green(
-        `${txtFiles.length} file(s) saved to folder ${output} successfully!`
+        `${
+          txtFiles.length + mdFiles.length
+        } file(s) saved to folder ${output} successfully!`
       )
     );
   });
