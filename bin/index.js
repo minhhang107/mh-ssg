@@ -6,6 +6,7 @@ const chalk = require("chalk");
 const { name, version } = require("../package.json");
 const processFile = require("./utils/processFile");
 const processFolder = require("./utils/processFolder");
+const processJSONFile = require("./utils/processJSONFile");
 const validateOutputFolder = require("./utils/validateOutputFolder");
 
 const argv = yargs
@@ -26,6 +27,11 @@ const argv = yargs
     describe: "Specify stylesheet for html file",
     type: "string",
   })
+  .option("config", {
+    alias: "c",
+    describe: "Specify config file",
+    type: "array",
+  })
   .alias("help", "h")
   .version(`You're running ${name} version ${version}`)
   .alias("version", "v").argv;
@@ -42,6 +48,12 @@ console.log(
 );
 yargs.showHelp();
 console.log("");
+
+if (argv.config) {
+  const configPath = argv.config.join(" ");
+  processJSONFile(configPath);
+  return;
+}
 
 if (!argv.input) {
   if (argv.output)
