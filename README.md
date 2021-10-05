@@ -8,6 +8,7 @@ A simple static site generator that converts text files or markdown files into H
 - Allows input of a directory containing text file(s)
 - Supports custom stylesheet
 - Supports user-specified output folder
+- Supports JSON config files
 - Finds and sets title to HTML file (if available and only works for .txt file)
 - Finds and converts Markdown syntax (`Heading 1-6`, `italics`, `bold`, `link`, `inline code`, `horizontal rule`) into correct HTML tags
 
@@ -76,6 +77,18 @@ into
 
 </body>
 </html>
+```
+
+Using `mh-ssg -c ~/<path>/sample.json` will generate the same result
+
+##### sample.json
+
+```
+{
+  "input": "./Sherlock-Holmes-Selected-Stories",
+  "output": "./build",
+  "stylesheet": "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+}
 ```
 
 # License
