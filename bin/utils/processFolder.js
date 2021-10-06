@@ -10,17 +10,10 @@ const processFolder = (input, output, stylesheet) => {
       return process.exit(1);
     }
 
-    const txtFiles = files.filter((file) => path.extname(file) === ".txt");
-    txtFiles
-      .map((file) => {
-        return path.join(input, file);
-      })
-      .forEach((file) => {
-        processFile(file, output, stylesheet);
-      });
-
-    const mdFiles = files.filter((file) => path.extname(file) === ".md");
-    mdFiles
+    const acceptedFiles = files.filter(
+      (file) => path.extname(file) === ".txt" || path.extname(file) === ".md"
+    );
+    acceptedFiles
       .map((file) => {
         return path.join(input, file);
       })
@@ -30,9 +23,7 @@ const processFolder = (input, output, stylesheet) => {
 
     console.log(
       chalk.green(
-        `${
-          txtFiles.length + mdFiles.length
-        } file(s) saved to folder ${output} successfully!`
+        `${acceptedFiles.length} file(s) saved to folder ${output} successfully!`
       )
     );
   });
