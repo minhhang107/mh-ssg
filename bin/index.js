@@ -1,13 +1,9 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
 const yargs = require("yargs");
 const chalk = require("chalk");
 const { name, version } = require("../package.json");
-const processFile = require("./utils/processFile");
-const processFolder = require("./utils/processFolder");
+const processInput = require("./utils/processInput");
 const processJSONFile = require("./utils/processJSONFile");
-const validateOutputFolder = require("./utils/validateOutputFolder");
 
 const argv = yargs
   .scriptName("mh-ssg")
@@ -70,49 +66,4 @@ const output =
   !argv.output || argv.output == "" ? "dist" : argv.output.join(" ");
 const stylesheet = !argv.stylesheet ? "" : argv.stylesheet;
 
-if (input === "") {
-  console.error(
-    chalk.red(
-      "Input file cannot be blank. Please specify an input file or folder."
-    )
-  );
-  return process.exit(1);
-}
-
-fs.lstat(input, (err, stats) => {
-  if (err) {
-    console.error(
-      chalk.red("Input file does not exist. Please use a different file.")
-    );
-    return process.exit(1);
-  }
-
-  //process output folder before converting
-  if (!validateOutputFolder(output)) {
-    console.error(
-      chalk.red(
-        "Output folder does not exist. Please specify a different output folder."
-      )
-    );
-    return process.exit(1);
-  }
-
-  //handle text file input
-  if (stats.isFile()) {
-    if (path.extname(input) !== ".txt" && path.extname(input) !== ".md") {
-      console.error(
-        chalk.red(
-          "File type not supported. Please use a text file or markdown file (.txt or .md) only."
-        )
-      );
-      return process.exit(1);
-    }
-    processFile(input, output, stylesheet);
-    console.log(chalk.green(`File saved to folder ${output} successfully!`));
-  }
-
-  //handle folder input
-  if (stats.isDirectory()) {
-    processFolder(input, output, stylesheet);
-  }
-});
+processInput(input, output, stylesheet);
