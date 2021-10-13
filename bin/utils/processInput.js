@@ -6,14 +6,7 @@ const processFolder = require("./processFolder");
 const validateOutputFolder = require("./validateOutputFolder");
 
 const processInput = (input, output, stylesheet) => {
-  if (input === "") {
-    console.error(
-      chalk.red(
-        "Input file cannot be blank. Please specify an input file or folder."
-      )
-    );
-    return process.exit(1);
-  }
+  output = !output || output == "" ? "dist" : output;
 
   fs.lstat(input, (err, stats) => {
     if (err) {

@@ -51,19 +51,11 @@ if (argv.config) {
   return;
 }
 
-if (!argv.input) {
-  if (argv.output)
-    return console.error(
-      chalk.red(
-        "Input file cannot be blank. Please specify an input file or folder."
-      )
-    );
+if (argv.input) {
+  const output = !argv.output ? "" : argv.output.join(" ");
+  const stylesheet = !argv.stylesheet ? "" : argv.stylesheet;
+  const input = argv.input.join(" ");
+
+  processInput(input, output, stylesheet);
   return;
 }
-
-const input = argv.input.join(" ");
-const output =
-  !argv.output || argv.output == "" ? "dist" : argv.output.join(" ");
-const stylesheet = !argv.stylesheet ? "" : argv.stylesheet;
-
-processInput(input, output, stylesheet);

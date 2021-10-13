@@ -9,10 +9,7 @@ const processJSONFile = (jsonFile) => {
       return process.exit(1);
     }
 
-    const output = !data.output || data.output === "" ? "dist" : data.output;
-    const stylesheet = !data.stylesheet ? "" : data.stylesheet;
-
-    processInput(data.input, output, stylesheet);
+    processInput(data.input, data.output, data.stylesheet);
   });
 };
 
