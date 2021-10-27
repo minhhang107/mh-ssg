@@ -1,10 +1,32 @@
 const fs = require("fs");
 const path = require("path");
 const chalk = require("chalk");
-const createHtml = require("create-html");
+const generateHTML = require("./generateHTML");
+const hljs = require("highlight.js");
+const markdown = require("markdown-it")({
+  html: true,
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return (
+          '<pre class="hljs"><code>' +
+          hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+          "</code></pre>"
+        );
+      } catch (__) {}
+    }
+
+    return (
+      '<pre class="hljs"><code>' +
+      markdown.utils.escapeHtml(str) +
+      "</code></pre>"
+    );
+  },
+});
 
 //Convert text file into html file, return html content
 const processFile = (inputFile, output, stylesheet) => {
+  let assets;
   const inputFilePath = path.join(path.resolve(), inputFile);
   const getOutputFileName = (ext) => {
     return path.join(output, path.basename(inputFile, ext) + ".html");
@@ -22,49 +44,13 @@ const processFile = (inputFile, output, stylesheet) => {
       outputFilePath = getOutputFileName(".txt");
     } else {
       outputFilePath = getOutputFileName(".md");
-
-      const h1 = /^# (.*$)/gim;
-      const h2 = /^## (.*$)/gim;
-      const h3 = /^### (.*$)/gim;
-      const h4 = /^#### (.*$)/gim;
-      const h5 = /^##### (.*$)/gim;
-      const h6 = /^###### (.*$)/gim;
-      const bold = /\*\*(.*)\*\*/gim;
-      const italics = /\_(.*)\_/gim;
-      const link = /\[(.*?)\]\((.*?)\)/gim;
-      const code = /\`([^`].*)\`/gim;
-      const hr = /^---$/gim;
-      data = data
-        .replace(h1, "<h1>$1</h1>")
-        .replace(h2, "<h2>$1</h2>")
-        .replace(h3, "<h3>$1</h3>")
-        .replace(h4, "<h4>$1</h4>")
-        .replace(h5, "<h5>$1</h5>")
-        .replace(h6, "<h6>$1</h6>")
-        .replace(bold, "<b>$1</b>")
-        .replace(italics, "<i>$1</i>")
-        .replace(link, "<a href='$2'>$1</a>")
-        .replace(code, "<code>$1</code>")
-        .replace(hr, "<hr>");
+      data = markdown.render(data);
+      if (fs.existsSync(`${output}/assets`)) {
+        assets = fs.readdirSync(`${output}/assets`);
+      }
     }
 
-    const doubleNewLines = data.match(/^.+(\r?\n\r?\n)\r?\n/);
-    const title = doubleNewLines ? doubleNewLines[0] : "";
-    const content =
-      `<h1>${title.trim()}</h1>\n\n` +
-      data
-        .slice(title.length)
-        .split(/\r?\n\r?\n/)
-        .map((para) => `<p>${para.replace(/\r?\n/, " ")}</p>`)
-        .join("\n\n");
-
-    const html = createHtml({
-      title: title != "" ? title.trim() : path.basename(inputFile, ".txt"),
-      css: stylesheet,
-      lang: "en",
-      head: `<meta name="viewport" content="width=device-width, initial-scale=1"/>`,
-      body: content,
-    });
+    const html = generateHTML(inputFile, stylesheet, data, assets);
 
     fs.writeFile(outputFilePath, html, (err) => {
       if (err) {

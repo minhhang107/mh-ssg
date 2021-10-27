@@ -4,8 +4,9 @@ const chalk = require("chalk");
 const processFile = require("./processFile");
 const processFolder = require("./processFolder");
 const validateOutputFolder = require("./validateOutputFolder");
+const copyAssets = require("./copyAssets");
 
-const processInput = (input, output, stylesheet) => {
+const processInput = (input, output, stylesheet, assets) => {
   output = !output || output == "" ? "dist" : output;
 
   fs.lstat(input, (err, stats) => {
@@ -25,6 +26,9 @@ const processInput = (input, output, stylesheet) => {
       );
       return process.exit(1);
     }
+
+    //handle assets
+    if (assets && assets !== "") copyAssets(output, assets);
 
     //handle text file input
     if (stats.isFile()) {

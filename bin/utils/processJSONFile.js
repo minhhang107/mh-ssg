@@ -9,7 +9,7 @@ const processJSONFile = (jsonFile) => {
       return process.exit(1);
     }
 
-    processInput(data.input, data.output, data.stylesheet);
+    processInput(data.input, data.output, data.stylesheet, data.assets);
   });
 };
 
