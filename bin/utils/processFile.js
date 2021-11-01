@@ -13,7 +13,9 @@ const markdown = require("markdown-it")({
           hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
           "</code></pre>"
         );
-      } catch (__) {}
+      } catch (__) {
+        console.log(__);
+      }
     }
 
     return (

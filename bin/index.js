@@ -48,7 +48,6 @@ console.log("");
 if (argv.config) {
   const configPath = argv.config.join(" ");
   processJSONFile(configPath);
-  return;
 }
 
 if (argv.input) {
@@ -57,5 +56,4 @@ if (argv.input) {
   const input = argv.input.join(" ");
 
   processInput(input, output, stylesheet);
-  return;
 }

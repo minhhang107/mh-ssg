@@ -13,7 +13,7 @@ const generateHTML = (inputFile, stylesheet, data, assets) => {
       .join("\n");
 
   if (assets) {
-    const imgRegex = /\<img src="(.*?)"(.*?)\>/gim;
+    const imgRegex = /<img src="(.*?)"(.*?)>/gim;
     const imgTags = content.match(imgRegex);
     imgTags.forEach((tag) => {
       assets.forEach((asset) => {
