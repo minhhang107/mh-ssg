@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`end-to-end integration print error message when input not found 1`] = `
+"Usage: mh-ssg -i <filename> -o <outputpath> -s <stylesheet>
+
+Options:
+  -h, --help        Show help                                          [boolean]
+  -i, --input       Specify input file or input folder (required)        [array]
+  -o, --output      Specify output path                                  [array]
+  -s, --stylesheet  Specify stylesheet for html file                    [string]
+  -c, --config      Specify config file                                  [array]
+  -v, --version     Show version number                                [boolean]
+Input file does not exist. Please use a different file."
+`;
+
+exports[`end-to-end integration print error message when input not supported 1`] = `
+"Usage: mh-ssg -i <filename> -o <outputpath> -s <stylesheet>
+
+Options:
+  -h, --help        Show help                                          [boolean]
+  -i, --input       Specify input file or input folder (required)        [array]
+  -o, --output      Specify output path                                  [array]
+  -s, --stylesheet  Specify stylesheet for html file                    [string]
+  -c, --config      Specify config file                                  [array]
+  -v, --version     Show version number                                [boolean]
+Input file does not exist. Please use a different file."
+`;
+
+exports[`end-to-end integration print error message when no input 1`] = `
+"Usage: mh-ssg -i <filename> -o <outputpath> -s <stylesheet>
+
+Options:
+  -h, --help        Show help                                          [boolean]
+  -i, --input       Specify input file or input folder (required)        [array]
+  -o, --output      Specify output path                                  [array]
+  -s, --stylesheet  Specify stylesheet for html file                    [string]
+  -c, --config      Specify config file                                  [array]
+  -v, --version     Show version number                                [boolean]
+Input file does not exist. Please use a different file."
+`;
+
+exports[`end-to-end integration print help message when --help flag used 1`] = `
+"Usage: mh-ssg -i <filename> -o <outputpath> -s <stylesheet>
+
+Options:
+  -h, --help        Show help                                          [boolean]
+  -i, --input       Specify input file or input folder (required)        [array]
+  -o, --output      Specify output path                                  [array]
+  -s, --stylesheet  Specify stylesheet for html file                    [string]
+  -c, --config      Specify config file                                  [array]
+  -v, --version     Show version number                                [boolean]"
+`;
+
+exports[`end-to-end integration print help message when no arg  1`] = `
+"Usage: mh-ssg -i <filename> -o <outputpath> -s <stylesheet>
+
+Options:
+  -h, --help        Show help                                          [boolean]
+  -i, --input       Specify input file or input folder (required)        [array]
+  -o, --output      Specify output path                                  [array]
+  -s, --stylesheet  Specify stylesheet for html file                    [string]
+  -c, --config      Specify config file                                  [array]
+  -v, --version     Show version number                                [boolean]"
+`;
+
+exports[`end-to-end integration print version when --version flag used 1`] = `"You're running mh-ssg version 0.1.0"`;

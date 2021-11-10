@@ -23,3 +23,10 @@ A simple static site generator that converts text files or markdown files into H
 
 - Use `npm run eslint` to find issues in all the files in the project.
 - Use `npm run eslint-fix` to automatically fix issues.
+
+# Testing
+
+- Use `npm run test` to run all test suites
+- Use `npm run test-watchAll` to run all test suites, and automatically rerun the tests on changes
+- Use `npm run test file` to run all test files with `file` in their names
+- Use `npm run test-watch file` to run all test files with `file` in their names, and automatically rerun the tests on changes

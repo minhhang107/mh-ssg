@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const chalk = require("chalk");
-const generateHTML = require("./generateHTML");
+const { generateHTML } = require("./generateHTML");
 const hljs = require("highlight.js");
 const markdown = require("markdown-it")({
   html: true,
@@ -52,9 +52,9 @@ const processFile = (inputFile, output, stylesheet) => {
       }
     }
 
-    const html = generateHTML(inputFile, stylesheet, data, assets);
+    data = generateHTML(inputFile, stylesheet, data, assets);
 
-    fs.writeFile(outputFilePath, html, (err) => {
+    fs.writeFile(outputFilePath, data, (err) => {
       if (err) {
         console.error(chalk.red("Unable to save file."));
         return process.exit(1);
