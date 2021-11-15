@@ -12,7 +12,7 @@ const readdir = (dir) => {
   }
 
   files = files.filter(
-    (file) => path.extname(file) === ".txt" && path.extname(file) === ".md"
+    (file) => path.extname(file) === ".txt" || path.extname(file) === ".md"
   );
   return files;
 };
