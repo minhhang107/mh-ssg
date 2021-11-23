@@ -63,4 +63,4 @@ Options:
   -v, --version     Show version number                                [boolean]"
 `;
 
-exports[`end-to-end integration print version when --version flag used 1`] = `"You're running mh-ssg version 1.0.3"`;
+exports[`end-to-end integration print version when --version flag used 1`] = `"You're running mh-ssg version 1.0.5"`;
