@@ -10,7 +10,7 @@ Options:
   -s, --stylesheet  Specify stylesheet for html file                    [string]
   -c, --config      Specify config file                                  [array]
   -v, --version     Show version number                                [boolean]
-Input file does not exist. Please use a different file."
+[31mInput file does not exist. Please use a different file.[39m"
 `;
 
 exports[`end-to-end integration print error message when input not supported 1`] = `
@@ -23,7 +23,7 @@ Options:
   -s, --stylesheet  Specify stylesheet for html file                    [string]
   -c, --config      Specify config file                                  [array]
   -v, --version     Show version number                                [boolean]
-Input file does not exist. Please use a different file."
+[31mInput file does not exist. Please use a different file.[39m"
 `;
 
 exports[`end-to-end integration print error message when no input 1`] = `
@@ -36,7 +36,7 @@ Options:
   -s, --stylesheet  Specify stylesheet for html file                    [string]
   -c, --config      Specify config file                                  [array]
   -v, --version     Show version number                                [boolean]
-Input file does not exist. Please use a different file."
+[31mInput file does not exist. Please use a different file.[39m"
 `;
 
 exports[`end-to-end integration print help message when --help flag used 1`] = `
@@ -63,4 +63,4 @@ Options:
   -v, --version     Show version number                                [boolean]"
 `;
 
-exports[`end-to-end integration print version when --version flag used 1`] = `"You're running mh-ssg version 0.1.0"`;
+exports[`end-to-end integration print version when --version flag used 1`] = `"You're running mh-ssg version 1.0.0"`;
