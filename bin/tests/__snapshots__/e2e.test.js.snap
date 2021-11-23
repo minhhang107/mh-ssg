@@ -10,7 +10,7 @@ Options:
   -s, --stylesheet  Specify stylesheet for html file                    [string]
   -c, --config      Specify config file                                  [array]
   -v, --version     Show version number                                [boolean]
-[31mInput file does not exist. Please use a different file.[39m"
+Input file does not exist. Please use a different file."
 `;
 
 exports[`end-to-end integration print error message when input not supported 1`] = `
@@ -23,7 +23,7 @@ Options:
   -s, --stylesheet  Specify stylesheet for html file                    [string]
   -c, --config      Specify config file                                  [array]
   -v, --version     Show version number                                [boolean]
-[31mInput file does not exist. Please use a different file.[39m"
+Input file does not exist. Please use a different file."
 `;
 
 exports[`end-to-end integration print error message when no input 1`] = `
@@ -36,7 +36,7 @@ Options:
   -s, --stylesheet  Specify stylesheet for html file                    [string]
   -c, --config      Specify config file                                  [array]
   -v, --version     Show version number                                [boolean]
-[31mInput file does not exist. Please use a different file.[39m"
+Input file does not exist. Please use a different file."
 `;
 
 exports[`end-to-end integration print help message when --help flag used 1`] = `
