@@ -9,15 +9,13 @@ A simple static site generator that converts text files or markdown files into H
 - Supports custom stylesheet
 - Supports user-specified output folder
 - Supports JSON config files
+- Supports photo assets
 - Finds and sets title to HTML file (if available and only works for .txt file)
-- Finds and converts Markdown syntax (`Heading 1-6`, `italics`, `bold`, `link`, `inline code`, `horizontal rule`) into correct HTML tags
 
 # Installation
 
-> 1.  Clone the project
-> 2.  Install [NodeJs](https://nodejs.org/en/)
-> 3.  Redirect to project directory
-> 4.  Install the tool with `npm i -g .`
+> 1.  Install [NodeJs](https://nodejs.org/en/)
+> 2.  Install the tool with `npm i mh-ssg`
 
 # Help
 
