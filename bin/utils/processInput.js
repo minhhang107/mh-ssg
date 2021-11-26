@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const chalk = require("chalk");
 const processFile = require("./processFile");
-const processFolder = require("./processFolder");
+const { processFolder } = require("./processFolder");
 const validateOutputFolder = require("./validateOutputFolder");
 const copyAssets = require("./copyAssets");
 

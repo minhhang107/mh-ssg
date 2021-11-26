@@ -6,7 +6,7 @@ const validateOutputFolder = (folder) => {
   }
 
   if (folder === "dist") {
-    fs.rmdirSync(folder, { recursive: true, force: true });
+    fs.rmSync(folder, { recursive: true, force: true });
     fs.mkdirSync(folder);
   }
   return true;
