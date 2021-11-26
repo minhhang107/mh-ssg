@@ -9,7 +9,7 @@ A simple static site generator that converts text files or markdown files into H
 - Supports custom stylesheet
 - Supports user-specified output folder
 - Supports JSON config files
-- Supports photo assets
+- Supports photo assets (only when assets are provided in config file)
 - Finds and sets title to HTML file (if available and only works for .txt file)
 
 # Installation
