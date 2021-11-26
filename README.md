@@ -85,7 +85,8 @@ Using `mh-ssg -c ~/<path>/sample.json` will generate the same result
 {
   "input": "./Sherlock-Holmes-Selected-Stories",
   "output": "./build",
-  "stylesheet": "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+  "stylesheet": "https://cdn.jsdelivr.net/npm/water.css@2/out/water.css",
+  "assets": "example.jpg"
 }
 ```
 
