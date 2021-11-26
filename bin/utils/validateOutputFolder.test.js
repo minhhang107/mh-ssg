@@ -13,7 +13,7 @@ describe("validate output folder", () => {
     const path = "dist";
     fs.existsSync.mockReturnValue(true);
     validate(path);
-    expect(fs.rmdirSync).toHaveBeenCalled();
+    expect(fs.rmSync).toHaveBeenCalled();
   });
 
   test("should create new dist folder", async () => {
